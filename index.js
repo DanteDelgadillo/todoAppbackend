@@ -70,6 +70,19 @@ todoRoutes.route("/update/:id").put(function (req, res) {
 })
 
 
+todoRoutes.route("/delete/:id").delete(function (req, res) {
+    const id = req.params.id;
+
+    Todo.findByIdAndDelete(id)
+        .then(todo => {
+            res.json('todo deleted');
+        })
+        .catch(err => {
+            res.status(400).send("delete no possible")
+        })
+})
+
+
 app.use('/todos', todoRoutes);
 
 app.listen(PORT, function () {
