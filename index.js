@@ -13,9 +13,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 mongooose.connect(process.env.MONGODB_CONNECTION, { useNewUrlParser: true })
-const connction = mongooose.connection;
+const connection = mongooose.connection;
 
-connction.once("open", function () {
+connection.once("open", function () {
     console.log('mongodb connection is working')
 })
 
@@ -86,5 +86,5 @@ todoRoutes.route("/delete/:id").delete(function (req, res) {
 app.use('/todos', todoRoutes);
 
 app.listen(PORT, function () {
-    console.log(`port runinnin on ${PORT}`)
+    console.log(`port running on ${PORT}`)
 })
